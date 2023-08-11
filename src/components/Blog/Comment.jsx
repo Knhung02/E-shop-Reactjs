@@ -1,6 +1,6 @@
 
 import React, {useState} from "react";
-import axios from "axios";
+import axiosClient from "../../configs/axios";
 import FormError from "../Member/FormError";
 
 function Comment(props){
@@ -41,7 +41,7 @@ function Comment(props){
         // console.log(userData)
         if(userData){
           userData =JSON.parse(userData)
-          let url = "http://localhost/laravel8/public/api/blog/comment/" + props.idBlog 
+          let url = "/blog/comment/" + props.idBlog 
           let accessToken = localStorage["token"];
           // console.log(accessToken)
           //config de gui token qua API 
@@ -63,7 +63,7 @@ function Comment(props){
                 formData.append("image_user", userData.avatar);
                 formData.append("name_user", userData.name);
                 
-            axios.post(url,formData, config)
+            axiosClient.post(url,formData, config)
             .then(res =>{
              
               if(res.data.errors){

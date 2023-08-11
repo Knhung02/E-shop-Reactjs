@@ -97,7 +97,7 @@ function Update(){
             //duong dan Api
            
     
-            let url = "http://localhost/laravel8/public/api/user/update/" + userData.id
+            let url = "/user/update/" + userData.id
             let accessToken = localStorage["token"];
             // console.log(accessToken)
             //config de gui token qua API 

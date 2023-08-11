@@ -1,8 +1,7 @@
-import axios from "axios";
 import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import FormError from "./FormError";
-
+import axiosClient from "../../configs/axios";
 function Login(){
     const navigate = useNavigate();
 
@@ -49,7 +48,7 @@ function Login(){
                 level: 0,
             }
             // console.log(data)
-            axios.post("http://localhost/laravel8/public/api/login", data)
+            axiosClient.post("/login", data)
             
             .then((res)=>{
                 if(res.data.errors){

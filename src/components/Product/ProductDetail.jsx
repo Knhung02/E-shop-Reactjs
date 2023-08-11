@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosClient from '../../configs/axios';
 import React, { useEffect, useState }  from 'react';
 import { useParams } from 'react-router-dom';
 import DataCategory from '../DataCategory'
@@ -10,7 +10,7 @@ function ProductDetail({taps= DataCategory}) {
     const [changeImg,setchangeImg]=useState("")
    
     useEffect(()=>{
-        axios.get("http://localhost/laravel8/public/api/product/detail/" + params.id)
+        axiosClient.get("/product/detail/" + params.id)
         .then(res =>{
              console.log(res)
             setData(res.data.data)

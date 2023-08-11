@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import axiosClient from "../../configs/axios";
 import FormError  from "../Member/FormError";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +24,7 @@ function AddProduct(){
     const [getFile, setFile] = useState("")
 
     useEffect(() =>{
-        axios.get("http://localhost/laravel8/public/api/category-brand")
+        axiosClient.get("/category-brand")
         .then(res=>{
             console.log(res.data.category)
             setBrand(res.data.brand)
@@ -138,7 +138,7 @@ function AddProduct(){
             // tat ca ok het
             setErrors({});
             //duong dan Api
-            let url = "http://localhost/laravel8/public/api/user/product/add" 
+            let url = "/user/product/add" 
             let accessToken = localStorage["token"];
             console.log(accessToken)
             //config de gui token qua API 
@@ -166,7 +166,7 @@ function AddProduct(){
                     Object.keys(getFile).map((item,i) =>{
                         formData.append("file[]", getFile[item]);
                     })
-                    axios.post(url,formData, config)
+                    axiosClient.post(url,formData, config)
                     
                     .then(res =>{
                         console.log(res)

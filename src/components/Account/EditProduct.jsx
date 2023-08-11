@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import axiosClient from "../../configs/axios";
 import FormError  from "../Member/FormError";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function EditProduct(props){
- 
+    const navigate = useNavigate()
     let params = useParams()
    
     const [getBrand, setBrand] = useState("")
@@ -30,7 +30,7 @@ function EditProduct(props){
 
     useEffect(() =>{
         
-        let url = ("http://localhost/laravel8/public/api/user/product/" + params.id)
+        let url = ("/user/product/" + params.id)
        
 		let accessToken = localStorage["token"];
         if(accessToken){
@@ -44,7 +44,7 @@ function EditProduct(props){
                 } 
             };	
 
-            axios.get(url, config)
+            axiosClient.get(url, config)
             .then(res =>{
                 // console.log(res.data.data)
             
@@ -72,7 +72,7 @@ function EditProduct(props){
     },[])
     
     useEffect(() =>{
-        axios.get("http://localhost/laravel8/public/api/category-brand")
+        axiosClient.get("/category-brand")
         .then(res=>{
             // console.log(res.data.category)
             setBrand(res.data.brand)
@@ -223,7 +223,7 @@ function EditProduct(props){
         }else{
             setErrors({});
 
-            let url = "http://localhost/laravel8/public/api/user/product/update/" + params.id;
+            let url = "/user/product/update/" + params.id;
             let accessToken = localStorage["token"];
             // console.log(accessToken)
             //config de gui token qua API 
@@ -255,7 +255,7 @@ function EditProduct(props){
                     Object.keys(getAvatar).map((item,i) =>{
                          formData.append("avatarCheckBox[]", getAvatar[item]);
                     })
-                    axios.post(url,formData, config)
+                    axiosClient.post(url,formData, config)
                     .then(res =>{
                         
                         if(res.data.errors){
@@ -263,7 +263,7 @@ function EditProduct(props){
                         }else{
                             console.log(res)
                             alert("Edit product successful")
-                           
+                            navigate("/account/my-product");
                         }
                         
                     }).catch( errors=>console.log(errors))    

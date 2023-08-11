@@ -21,7 +21,7 @@ function ListComment(props){
               <>
                   <li className="media">
                       <a className="pull-left" href="#">
-                      <img className="media-object" src={"http://localhost/laravel8/public/upload/user/avatar/" + value.image_user  } alt="" />
+                      <img className="media-object" src={"/upload/user/avatar/" + value.image_user  } alt="" />
                       </a>
                       <div className="media-body">
                       <ul className="sinlge-post-meta">
@@ -39,7 +39,7 @@ function ListComment(props){
                           return(
                               <li className="media second-media">
                                   <a className="pull-left" href="#">
-                                  <img className="media-object" src={"http://localhost/laravel8/public/upload/user/avatar/" + value2.image_user } alt="" />
+                                  <img className="media-object" src={"/upload/user/avatar/" + value2.image_user } alt="" />
                                   </a>
                                   <div className="media-body">
                                       <ul className="sinlge-post-meta">

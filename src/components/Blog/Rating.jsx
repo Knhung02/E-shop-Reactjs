@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import FormError from "../Member/FormError";
-import axios from "axios";
+import axiosClient from '../../configs/axios';
 function Rating(props){
 
     const [rating, setRating] = useState(0)
 
     const [errors, setErrors] = useState({})
     useEffect(() =>{
-        axios.get("http://localhost/laravel8/public/api/blog/rate/" + props.idBlog)
+        axiosClient.get("/blog/rate/" + props.idBlog)
         .then(res=>{
            
             const rates= res.data.data;
@@ -44,7 +44,7 @@ function Rating(props){
         else{
             setErrors({})
             let userData = localStorage["infoUser"]
-            let url = "http://localhost/laravel8/public/api/blog/rate/" + props.idBlog 
+            let url = "/blog/rate/" + props.idBlog 
             let accessToken = localStorage["token"];
             // console.log(accessToken)
             //config de gui token qua API 
@@ -65,7 +65,7 @@ function Rating(props){
                     formData.append("user_id", userData.id);
                     formData.append("rate", newRating)
                 
-                    axios.post(url,formData, config)
+                    axiosClient.post(url,formData, config)
                     .then(res =>{
                         if(res.data.errors){
                             setErrors(res.data.errors)

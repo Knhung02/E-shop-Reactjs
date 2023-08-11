@@ -1,13 +1,13 @@
 
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import axiosClient from "../../configs/axios";
 import { Link } from "react-router-dom";
 function Blog(){
 
   const [data, setData] = useState([])
     
   useEffect(() =>{
-      axios.get("http://localhost/laravel8/public/api/blog")
+      axiosClient.get("/blog")
       .then(res=>{
           // console.log(res)
           setData(res.data.blog.data)

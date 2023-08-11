@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import axiosClient from "../../configs/axios";
 import { BsTrash3 } from 'react-icons/bs';
 import { FiEdit } from 'react-icons/fi';
 
@@ -12,7 +12,7 @@ function MyProduct() {
 		navigate("/account/add-product");
 	}
 	useEffect(() =>{
-		let url = "http://localhost/laravel8/public/api/user/my-product" 
+		let url = "/user/my-product" 
 		let accessToken = localStorage["token"];
 		// console.log(accessToken)
 		//config de gui token qua API 
@@ -26,7 +26,7 @@ function MyProduct() {
 				} 
 			};	
 	
-			axios.get(url, config)
+			axiosClient.get(url, config)
 			.then(res =>{
 				// console.log(res.data.data)
 				setData(res.data.data)
@@ -38,7 +38,7 @@ function MyProduct() {
 	function deleteProduct(e){
 		let getId = e.target.id;
 		// console.log(getId)
-		let url = "http://localhost/laravel8/public/api/user/product/delete/" + getId
+		let url = "/user/product/delete/" + getId
 		let accessToken = localStorage["token"];
 		if(accessToken){
 			accessToken =JSON.parse(accessToken)
@@ -50,7 +50,7 @@ function MyProduct() {
 				'Accept': 'application/json'
 				} 
 			};	
-			axios.get(url, config)
+			axiosClient.get(url, config)
 			.then(res =>{
 				// console.log(res)
 				setData(res.data.data)

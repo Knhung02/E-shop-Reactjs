@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import axiosClient from "../../configs/axios";
 import Comment from "./Comment";
 import ListComment from "./ListComment";
 import { useParams } from "react-router-dom";
@@ -12,7 +12,7 @@ function BlogDetail(){
   const [listCmt, setListCmt] = useState([])
   const [idRep, setIdRep] =  useState("");
   useEffect(() =>{
-      axios.get("http://localhost/laravel8/public/api/blog/detail/" + params.id)
+      axiosClient.get("/blog/detail/" + params.id)
       .then(res=>{
         // console.log(res)
         setData(res.data.data)

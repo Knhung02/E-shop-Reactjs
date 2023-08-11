@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Blog from './components/Blog/Blog';
 import Home from './components/Home';
+
 import BlogDetail from './components/Blog/BlogDetail';
 
 import Login from './components/Member/Login';
@@ -22,10 +23,11 @@ import ProductDetail from './components/Product/ProductDetail';
 import Cart from './components/Product/Cart';
 
 import Register from './components/Member/Register';
+import NotFound from './components/NotFound';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <React.Fragment>
   <Router>
     <App>
       <Routes>
@@ -45,14 +47,14 @@ root.render(
 
           <Route path="/product/detail/:id" element = {<ProductDetail/>} />
           <Route path="/product/cart" element = {<Cart/>} />
-       
           {/* paths except the ones above */}
-          {/* <Route path="*" element = {<NotFound/>} /> */}
+          <Route path="*" element = {<NotFound/>} />
       </Routes>
     </App>
+
   </Router>
 
-</React.StrictMode>
+</React.Fragment>
 );
 
 // If you want to start measuring performance in your app, pass a function

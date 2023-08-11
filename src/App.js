@@ -3,23 +3,31 @@ import './App.css';
 import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 import MenuLeft from './components/Layout/MenuLeft';
-import MenuLeft2 from './components/Layout/MenuLeft2';
 import { useLocation } from 'react-router-dom';
 import React, {useState} from "react";
 import { CartContext } from './components/CartContext';
-
-
+import MenuLeft2 from './components/Layout/MenuLeft2'
 function App(props) {
   let params1 = useLocation();
   console.log(params1)
-
+  
+ 
+  function menu(){
+    if(params1['pathname'].includes("account")){
+      return <MenuLeft2 />;
+    }else if(params1['pathname'].includes("product/cart")){
+      return null;
+    }else{
+      return <MenuLeft />; 
+    }
+  }
   const [count, setCount] = useState("")
 
   function updateNumber(tongQty){
     setCount(tongQty)
     localStorage.setItem("Cart",tongQty)
   }
-
+  
   return (
     <div>
         <CartContext.Provider 
@@ -31,7 +39,8 @@ function App(props) {
             <section>
                 <div className="container">
                     <div className="row">
-                        {params1['pathname'].includes("product/cart") ? null : <MenuLeft/>}
+                        {/* {params1['pathname'].includes("product/cart")? null : <MenuLeft/>} */}
+                        {menu()}
                         {props.children}
                     </div>
                 </div>

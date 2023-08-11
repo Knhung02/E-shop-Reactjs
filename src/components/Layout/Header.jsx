@@ -193,7 +193,7 @@ function Header(){
                                                     <li><Link to="/blog/list">Blog Single</Link></li>
                                                 </ul>
                                             </li> 
-                                            <li><Link to="404.html">404</Link></li>
+                                            <li><Link to="*">404</Link></li>
                                             <li><Link to="contact-us.html">Contact</Link></li>
                                         </ul>
                                     </div>

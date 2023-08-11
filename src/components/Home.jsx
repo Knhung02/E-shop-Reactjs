@@ -1,6 +1,6 @@
 
 import React, {useEffect, useState, useContext} from "react";
-import axios from "axios";
+import axiosClient from "../configs/axios";
 import { CartContext } from "./CartContext";
 import { Link } from "react-router-dom";
 import DataCategory from './DataCategory'
@@ -10,9 +10,9 @@ function Home({tabs = DataCategory}){
 	const [data, setData] = useState([])
 
 	useEffect(() =>{
-		let url = "http://localhost/laravel8/public/api/product" 
+		let url = "/product" 
 		
-		axios.get(url)
+		axiosClient.get(url)
 		.then(res =>{
 			
 			console.log(res.data.data)

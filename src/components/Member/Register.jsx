@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import axiosClient from "../../configs/axios";
 import FormError from "./FormError";
 function Register(){
 
@@ -105,7 +105,7 @@ function Register(){
                 level: 0,
             }
             console.log(data)
-            axios.post("http://localhost/laravel8/public/api/register", data)
+            axiosClient.post("/register", data)
             
             .then((res)=>{
                 
