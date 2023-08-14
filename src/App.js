@@ -24,15 +24,16 @@ function App(props) {
   function updateNumber(tongQty){
     setCount(tongQty)
     localStorage.setItem("Cart",tongQty)
+    
   }
   
   return (
     <div>
-        <CartContext.Provider 
-          value ={{
-            count:count,
+        <CartContext.Provider value ={
+          { count:count,
             updateNumber:updateNumber  
-           }}>
+           }
+        }>
             <Header/>
             <section>
                 <div className="container">

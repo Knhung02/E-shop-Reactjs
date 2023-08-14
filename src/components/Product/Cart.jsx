@@ -50,10 +50,12 @@ function Cart() {
                     if(data2[key]>1){
                         data2[key] -= 1;
 					    localStorage.setItem("AddToCart",JSON.stringify(data2))
+                        
                     }
                     else{
                         delete data2[key];
                         localStorage.setItem("AddToCart",JSON.stringify(data2))
+                       
                     }
 				}
 			})

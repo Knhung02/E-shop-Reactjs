@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
-
-import { useSelector } from 'react-redux';
 import { CartContext } from '../CartContext';
 
 
@@ -9,10 +7,6 @@ import { CartContext } from '../CartContext';
 function Header(){
     const navigate = useNavigate();
     const cart = useContext(CartContext)
-    // const cart=useSelector(state => state.hobby.qty)
-    // console.log(cart)
-
-
     let storage = localStorage.getItem("Cart");
 	
         function renderLogin(){
