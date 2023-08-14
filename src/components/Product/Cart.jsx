@@ -10,17 +10,16 @@ function Cart() {
     let total = 0;
     
 	useEffect(() =>{
-
-            axiosClient.post("/product/cart", storage)
-                
-            .then((res)=>{
-                if(res.data.errors){
-                    setErrors(res.data.errors)
-                }else{
-                    // console.log(res.data.data)
-                    setData(res.data.data)
-                }
-            })
+        axiosClient.post("/product/cart", storage)
+            
+        .then((res)=>{
+            if(res.data.errors){
+                setErrors(res.data.errors)
+            }else{
+                // console.log(res.data.data)
+                setData(res.data.data)
+            }
+        })
 	},[])
     // let getId = e.target.id;
      // console.log(getId)
@@ -33,7 +32,6 @@ function Cart() {
         // copy ra 1 data moi 
         let data2 = [...data];
         data2.map((items,index)=>{
-        
             if(items.id == getId){
                 if(items.qty>1){
                     data2[index]["qty"] -=1;
@@ -45,13 +43,10 @@ function Cart() {
         let a = data2.filter(n => n)
         setData(a)
         if(storage){
-
 			data2 = JSON.parse(storage)
-			
 			Object.keys(data2).map((key) => {
 				// console.log(key)
 				if(key == getId){
-                    
                     if(data2[key]>1){
                         data2[key] -= 1;
 					    localStorage.setItem("AddToCart",JSON.stringify(data2))
@@ -60,7 +55,6 @@ function Cart() {
                         delete data2[key];
                         localStorage.setItem("AddToCart",JSON.stringify(data2))
                     }
-					
 				}
 			})
 		}
@@ -96,7 +90,6 @@ function Cart() {
 
     function handleRemove(e){
         let getId = e.target.id;
-        
         // copy ra 1 data moi 
         let data3 = [...data];
         
@@ -111,7 +104,6 @@ function Cart() {
         // console.log(a)
         setData(a)
         if(storage){
-
 			let data3 = JSON.parse(storage)
 			
 			Object.keys(data3).map((key) => {
@@ -163,8 +155,7 @@ function Cart() {
         }
     }
 
-	return (
-        
+	return (    
 		<section id="cart_items">
             <div className="container">
                 <div className="breadcrumbs">
@@ -272,7 +263,6 @@ function Cart() {
                 </div>
 	        </section>
         </section> 
-
 	);
 }
 
