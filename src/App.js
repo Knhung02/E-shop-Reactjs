@@ -9,9 +9,7 @@ import { CartContext } from './components/CartContext';
 import MenuLeft2 from './components/Layout/MenuLeft2'
 function App(props) {
   let params1 = useLocation();
-  console.log(params1)
-  
- 
+  // console.log(params1)
   function menu(){
     if(params1['pathname'].includes("account")){
       return <MenuLeft2 />;
@@ -39,7 +37,6 @@ function App(props) {
             <section>
                 <div className="container">
                     <div className="row">
-                        {/* {params1['pathname'].includes("product/cart")? null : <MenuLeft/>} */}
                         {menu()}
                         {props.children}
                     </div>

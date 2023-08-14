@@ -2,6 +2,7 @@
 import React, {useState} from "react";
 import axiosClient from "../../configs/axios";
 import FormError from "../Member/FormError";
+import { Link } from "react-router-dom";
 
 function Comment(props){
 
@@ -93,7 +94,7 @@ function Comment(props){
                   </div>
                   <span>*</span>
                   <textarea name="message" rows={11} onChange={handleInput} />
-                  <a onClick={handleSubmit} className="btn btn-primary" href >post comment</a>
+                  <Link onClick={handleSubmit} className="btn btn-primary" to ="#" >post comment</Link>
                 </div>
               </div>
             </div>

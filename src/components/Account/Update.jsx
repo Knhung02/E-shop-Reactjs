@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+
 import FormError from "../Member/FormError";
+import axiosClient from "../../configs/axios";
 function Update(){
     const [inputs, setInputs] = useState({
         name: "" ,
@@ -120,7 +121,7 @@ function Update(){
                 formData.append("phone", inputs.phone);
                 formData.append("address",inputs.address);
                 formData.append("avatar", getAvatar);
-                axios.post(url,formData, config)
+                axiosClient.post(url,formData, config)
                 .then(res =>{
                     
                     if(res.data.errors){

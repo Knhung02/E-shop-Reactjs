@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 function MenuLeft(){
     
@@ -8,86 +9,86 @@ function MenuLeft(){
                   <div className="left-sidebar">
                     <h2>Category</h2>
                     <div className="panel-group category-products" id="accordian">{/*category-productsr*/}
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                    <div className="panel panel-default">
+                      <div className="panel-heading">
+                        <h4 className="panel-title">
+                          <Link data-toggle="collapse" data-parent="#accordian" to="#sportswear">
+                            <span className="badge pull-right"><i className="fa fa-plus"></i></span>
                             Sportswear
-                          </a>
+                          </Link>
                         </h4>
                       </div>
-                      <div id="sportswear" class="panel-collapse collapse">
-                        <div class="panel-body">
+                      <div id="sportswear" className="panel-collapse collapse">
+                        <div className="panel-body">
                           <ul>
-                            <li><a href="#">Nike </a></li>
-                            <li><a href="#">Under Armour </a></li>
-                            <li><a href="#">Adidas </a></li>
-                            <li><a href="#">Puma</a></li>
-                            <li><a href="#">ASICS </a></li>
+                            <li><Link to="#">Nike </Link></li>
+                            <li><Link to="#">Under Armour </Link></li>
+                            <li><Link to="#">Adidas </Link></li>
+                            <li><Link to="#">Puma</Link></li>
+                            <li><Link to="#">ASICS </Link></li>
                           </ul>
                         </div>
                       </div>
 							      </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordian" href="#mens">
-                            <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                    <div className="panel panel-default">
+                      <div className="panel-heading">
+                        <h4 className="panel-title">
+                          <Link data-toggle="collapse" data-parent="#accordian" to="#mens">
+                            <span className="badge pull-right"><i className="fa fa-plus"></i></span>
                             Mens
-                          </a>
+                          </Link>
                         </h4>
                       </div>
-                      <div id="mens" class="panel-collapse collapse">
-                        <div class="panel-body">
+                      <div id="mens" className="panel-collapse collapse">
+                        <div className="panel-body">
                           <ul>
-                            <li><a href="#">Fendi</a></li>
-                            <li><a href="#">Guess</a></li>
-                            <li><a href="#">Valentino</a></li>
-                            <li><a href="#">Dior</a></li>
-                            <li><a href="#">Versace</a></li>
-                            <li><a href="#">Armani</a></li>
-                            <li><a href="#">Prada</a></li>
-                            <li><a href="#">Dolce and Gabbana</a></li>
-                            <li><a href="#">Chanel</a></li>
-                            <li><a href="#">Gucci</a></li>
+                            <li><Link to="#">Fendi</Link></li>
+                            <li><Link to="#">Guess</Link></li>
+                            <li><Link to="#">Valentino</Link></li>
+                            <li><Link to="#">Dior</Link></li>
+                            <li><Link to="#">Versace</Link></li>
+                            <li><Link to="#">Armani</Link></li>
+                            <li><Link to="#">Prada</Link></li>
+                            <li><Link to="#">Dolce and Gabbana</Link></li>
+                            <li><Link to="#">Chanel</Link></li>
+                            <li><Link to="#">Gucci</Link></li>
                           </ul>
                         </div>
                       </div>
                     </div>
                       <div className="panel panel-default">
                         <div className="panel-heading">
-                          <h4 className="panel-title"><a href="#">Dresses</a></h4>
+                          <h4 className="panel-title"><Link to="#">Dresses</Link></h4>
                         </div>
                       </div>
                       <div className="panel panel-default">
                         <div className="panel-heading">
-                          <h4 className="panel-title"><a href="#">Sweaters</a></h4>
+                          <h4 className="panel-title"><Link to="#">Sweaters</Link></h4>
                         </div>
                       </div>
                       <div className="panel panel-default">
                         <div className="panel-heading">
-                          <h4 className="panel-title"><a href="#">Jeans</a></h4>
+                          <h4 className="panel-title"><Link to="#">Jeans</Link></h4>
                         </div>
                       </div>
                       <div className="panel panel-default">
                         <div className="panel-heading">
-                          <h4 className="panel-title"><a href="#">Shorts</a></h4>
+                          <h4 className="panel-title"><Link to="#">Shorts</Link></h4>
                         </div>
                       </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h4 class="panel-title"><a href="#">Fashion</a></h4>
+                      <div className="panel panel-default">
+                        <div className="panel-heading">
+                          <h4 className="panel-title"><Link to="#">Fashion</Link></h4>
                         </div>
                       </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h4 class="panel-title"><a href="#">Households</a></h4>
+                      <div className="panel panel-default">
+                        <div className="panel-heading">
+                          <h4 className="panel-title"><Link to="#">Households</Link></h4>
                         </div>
                       </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h4 class="panel-title"><a href="#">Interiors</a></h4>
+                      <div className="panel panel-default">
+                        <div className="panel-heading">
+                          <h4 className="panel-title"><Link to="#">Interiors</Link></h4>
                         </div>
                       </div>
                       
@@ -97,13 +98,13 @@ function MenuLeft(){
                       <h2>Brands</h2>
                       <div className="brands-name">
                         <ul className="nav nav-pills nav-stacked">
-                          <li><a href> <span className="pull-right">(50)</span>Hanes</a></li>
-                          <li><a href> <span className="pull-right">(56)</span>Nautica</a></li>
-                          <li><a href> <span className="pull-right">(27)</span>Seam Pocket</a></li>
-                          <li><a href> <span className="pull-right">(32)</span>Silver Jeans Co.</a></li>
-                          <li><a href> <span className="pull-right">(5)</span>Oddmolly</a></li>
-                          <li><a href> <span className="pull-right">(9)</span>Boudestijn</a></li>
-                          <li><a href> <span className="pull-right">(4)</span>Rösch creative culture</a></li>
+                          <li><Link to ="#"> <span className="pull-right">(50)</span>Hanes</Link></li>
+                          <li><Link to ="#"> <span className="pull-right">(56)</span>Nautica</Link></li>
+                          <li><Link to ="#"> <span className="pull-right">(27)</span>Seam Pocket</Link></li>
+                          <li><Link to ="#"> <span className="pull-right">(32)</span>Silver Jeans Co.</Link></li>
+                          <li><Link to ="#"> <span className="pull-right">(5)</span>Oddmolly</Link></li>
+                          <li><Link to ="#"> <span className="pull-right">(9)</span>Boudestijn</Link></li>
+                          <li><Link to ="#"> <span className="pull-right">(4)</span>Rösch creative culture</Link></li>
                         </ul>
                       </div>
                     </div>{/*/brands_products*/}

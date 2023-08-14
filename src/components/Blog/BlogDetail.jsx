@@ -4,6 +4,8 @@ import Comment from "./Comment";
 import ListComment from "./ListComment";
 import { useParams } from "react-router-dom";
 import Rating from "./Rating";
+import { Link } from "react-router-dom";
+
 function BlogDetail(){
 
   let params = useParams()
@@ -52,14 +54,14 @@ function BlogDetail(){
                     <i className="fa fa-star-half-o" />
                 </span>
             </div>
-            <a href>
+            <Link to = "#">
             <img src={"http://localhost/laravel8/public/upload/Blog/image/" + value.image} alt="" />
-            </a>
+            </Link>
             <p>{value.content}</p>
             <div className="pager-area">
             <ul className="pager pull-right">
-                <li><a href="#">Pre</a></li>
-                <li><a href="#">Next</a></li>
+                <li><Link to="#">Pre</Link></li>
+                <li><Link to="#">Next</Link></li>
             </ul>
             </div>
         </div>

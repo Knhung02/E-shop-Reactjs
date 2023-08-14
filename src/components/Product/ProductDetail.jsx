@@ -1,7 +1,9 @@
 import axiosClient from '../../configs/axios';
 import React, { useEffect, useState }  from 'react';
 import { useParams } from 'react-router-dom';
-import DataCategory from '../DataCategory'
+import DataCategory from '../DataCategory';
+import { Link } from "react-router-dom";
+
 function ProductDetail({taps= DataCategory}) {
     let params=useParams()
     const [data,setData]=useState({})
@@ -36,12 +38,12 @@ function ProductDetail({taps= DataCategory}) {
                       {renderImg()}
                   </div>
                   {/* Controls */}
-                  <a className="left item-control" href="#similar-product" data-slide="prev">
+                  <Link className="left item-control" to="#similar-product" data-slide="prev">
                       <i className="fa fa-angle-left" />
-                  </a>
-                  <a className="right item-control" href="#similar-product" data-slide="next">
+                  </Link>
+                  <Link className="right item-control" to="#similar-product" data-slide="next">
                       <i className="fa fa-angle-right" />
-                  </a>
+                  </Link>
                 </div>
                     </div>
                     <div className="col-sm-7">
@@ -63,7 +65,7 @@ function ProductDetail({taps= DataCategory}) {
                           <p><b>Availability:</b> In Stock</p>
                           <p><b>Condition:{data.condition}</b> New</p>
                           <p><b>Brand:{data.id_brand}</b> E-SHOPPER</p>
-                          <a href><img src="images/product-details/share.png" className="share img-responsive" alt="" /></a>
+                          <Link to="#"><img src="images/product-details/share.png" className="share img-responsive" alt="" /></Link>
                         </div>{/*/product-information*/}
                     </div>
                 </> 
@@ -91,9 +93,9 @@ function ProductDetail({taps= DataCategory}) {
           return checkImg.map((value,index)=>{
             return(
               <>
-                <a>
+                <Link to="#">
                   <img alt="" id={value}  onClick={handleImg} className='productdetail' src={"http://localhost/laravel8/public/upload/product/"+idUser+"/"+ value }/>
-                </a>
+                </Link>
               </>
 
             )
@@ -195,12 +197,12 @@ function ProductDetail({taps= DataCategory}) {
                   </div>
                 </div>
               </div>
-              <a className="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+              <Link className="left recommended-item-control" to="#recommended-item-carousel" data-slide="prev">
                 <i className="fa fa-angle-left" />
-              </a>
-              <a className="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+              </Link>
+              <Link className="right recommended-item-control" to="#recommended-item-carousel" data-slide="next">
                 <i className="fa fa-angle-right" />
-              </a>			
+              </Link>			
             </div>
           </div>{/*/recommended_items*/}
         </div>

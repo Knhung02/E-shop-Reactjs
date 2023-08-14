@@ -1,18 +1,18 @@
-
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import axiosClient from "../../configs/axios";
+import { Link } from "react-router-dom";
 
 function Cart() {
-	const [data, setData] = useState([])
-    
+	const [data, setData] = useState([]);    
     let storage = localStorage.getItem("AddToCart");
     const [errors, setErrors] = useState({});
     let handleTotal =0;
     let total = 0;
     
 	useEffect(() =>{
-		axios.post("http://localhost/laravel8/public/api/product/cart", storage)
-            
+
+            axiosClient.post("/product/cart", storage)
+                
             .then((res)=>{
                 if(res.data.errors){
                     setErrors(res.data.errors)
@@ -31,70 +31,64 @@ function Cart() {
         let getId = e.target.id;
         
         // copy ra 1 data moi 
-        let data1 = [...data];
-        data1.map(function(value,index){
-            // console.log(value.qty)
-            if(value.id == getId ){
-                if(value.qty>1){
-                     data1[index]["qty"] -=1;
+        let data2 = [...data];
+        data2.map((items,index)=>{
+        
+            if(items.id == getId){
+                if(items.qty>1){
+                    data2[index]["qty"] -=1;
+                }else{
+                    delete data2[index]
                 }
-                else{
-                    delete data1[index]
-                }           
-            } 
+            }
         })
-        let a = data1.filter(n => n)
-        // console.log(a)
+        let a = data2.filter(n => n)
         setData(a)
-
         if(storage){
 
-			let data2 = JSON.parse(storage)
+			data2 = JSON.parse(storage)
 			
-			Object.keys(data2).map((key, value) => {
-				// console.log(data[key].qty)
-				if(key === getId ){
-                    if(data2[key].qty > 1){
+			Object.keys(data2).map((key) => {
+				// console.log(key)
+				if(key == getId){
+                    
+                    if(data2[key]>1){
                         data2[key] -= 1;
-                        // console.log(data2)
 					    localStorage.setItem("AddToCart",JSON.stringify(data2))
                     }
-					else{
-                        delete data2[key]
+                    else{
+                        delete data2[key];
                         localStorage.setItem("AddToCart",JSON.stringify(data2))
-                    }   
+                    }
+					
 				}
 			})
-            
 		}
-		
-    }
 
+    }
     function handleUp(e){
         let getId = e.target.id;
-        
         // copy ra 1 data moi 
-        let data1 = [...data];
-        data1.map(function(value,index){
+        let data2 = [...data];
+        data2.map(function(items,index){
         
-            if(value.id == getId){
-                data1[index]["qty"] +=1;
+            if(items.id == getId){
+                data2[index]["qty"] +=1;
             
             }
                 // kiem tra id co trong nay k?
                 // co thi tang qty len 
         })
-        setData(data1)
-        
+        setData(data2)
         if(storage){
 
-			data1 = JSON.parse(storage)
+			data2 = JSON.parse(storage)
 			
-			Object.keys(data1).map((key, value) => {
-				// console.log(key)
-				if(key === getId){
-					data1[key] += 1;
-					localStorage.setItem("AddToCart",JSON.stringify(data1))
+			Object.keys(data2).map((key) => {
+				console.log(data2[key])
+				if(key == getId){
+					data2[key] += 1;
+					localStorage.setItem("AddToCart",JSON.stringify(data2))
 				}
 			})
 		}
@@ -104,28 +98,28 @@ function Cart() {
         let getId = e.target.id;
         
         // copy ra 1 data moi 
-        let data1 = [...data];
+        let data3 = [...data];
         
-        data1.map(function(value,index){
+        data3.map(function(items,index){
         
-            if(value.id == getId){
-                delete data1[index]
+            if(items.id == getId){
+                delete data3[index]
             }
         })
         // console.log(data1)
-        let a = data1.filter(n => n)
+        let a = data3.filter(n => n)
         // console.log(a)
         setData(a)
         if(storage){
 
-			let data2 = JSON.parse(storage)
+			let data3 = JSON.parse(storage)
 			
-			Object.keys(data2).map((key, value) => {
+			Object.keys(data3).map((key) => {
 				// console.log(key)
-				if(key === getId){
-					delete data2[key]
+				if(key == getId){
+					delete data3[key]
                     
-					localStorage.setItem("AddToCart",JSON.stringify(data2))
+					localStorage.setItem("AddToCart",JSON.stringify(data3))
 				}
 			})
 		}       
@@ -139,12 +133,12 @@ function Cart() {
                 handleTotal = data[key].price * data[key].qty
                 total += handleTotal
 				return(
-                    <tr className="product">
+                    <tr key={`product_${index}`} className="product">
                         <td className="cart_product">
-                            <a href><img className="imgCart" src = {"http://localhost/laravel8/public/upload/product/" + data[key]["id_user"]  +"/"+ img[0]}/></a>
+                            <Link to><img alt="#" className="imgCart" src = {"http://localhost/laravel8/public/upload/product/" + data[key]["id_user"]  +"/"+ img[0]}/></Link>
                         </td>
                         <td className="cart_description">
-                            <h4><a href>{data[key].name}</a></h4>
+                            <h4><Link to>{data[key].name}</Link></h4>
                             <p>Web ID: {data[key].web_id}</p>
                         </td>
                         <td className="cart_price">
@@ -152,16 +146,16 @@ function Cart() {
                         </td>
                         <td className="cart_quantity">
                             <div className="cart_quantity_button">
-                                <a id ={data[key].id} onClick={handleUp} className="cart_quantity_up" href > + </a>
+                                <Link id ={data[key].id} onClick={handleUp} className="cart_quantity_up" to="#" > + </Link>
                                 <input className="cart_quantity_input" type="text" name="quantity" value={data[key].qty} autoComplete="off" size={2} />
-                                <a id ={data[key].id} onClick={handleDown} className="cart_quantity_down" href> - </a>
+                                <Link id ={data[key].id} onClick={handleDown} className="cart_quantity_down" to="#"> - </Link>
                             </div>
                         </td>
                         <td className="cart_total">
                             <p id ={data[key].id} className="cart_total_price">${handleTotal}</p>
                         </td>
                         <td className="cart_delete"  >
-                            <a  className="cart_quantity_delete" href><i id ={data[key].id} onClick={handleRemove} className="fa fa-times" /></a>
+                            <Link  className="cart_quantity_delete" to="#"><i id ={data[key].id} onClick={handleRemove} className="fa fa-times" /></Link>
                         </td>
                     </tr>
         	    )
@@ -175,7 +169,7 @@ function Cart() {
             <div className="container">
                 <div className="breadcrumbs">
                 <ul className="breadcrumb">
-                    <li><a href="#">Home</a></li>
+                    <li><Link to="#">Home</Link></li>
                     <li className="active">Shopping Cart</li>
                 </ul>
                 </div>
@@ -258,8 +252,8 @@ function Cart() {
                                         <input type="text"/>
                                     </li>
                                 </ul>
-                                <a className="btn btn-default update" href="">Get Quotes</a>
-                                <a className="btn btn-default check_out" href="">Continue</a>
+                                <Link className="btn btn-default update" to="#">Get Quotes</Link>
+                                <Link className="btn btn-default check_out" to="#">Continue</Link>
                             </div>
                         </div>
                         <div className="col-sm-6">
@@ -270,8 +264,8 @@ function Cart() {
                                     <li>Shipping Cost <span>Free</span></li>
                                     <li>Total <span>$61</span></li>
                                 </ul>
-                                    <a className="btn btn-default update" href="">Update</a>
-                                    <a className="btn btn-default check_out" href="">Check Out</a>
+                                    <Link className="btn btn-default update" to="#">Update</Link>
+                                    <Link className="btn btn-default check_out" to="#">Check Out</Link>
                             </div>
                         </div>
                     </div>

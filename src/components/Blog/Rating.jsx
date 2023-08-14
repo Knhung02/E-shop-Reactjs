@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import FormError from "../Member/FormError";
 import axiosClient from '../../configs/axios';
+import { Link } from "react-router-dom";
+
 function Rating(props){
 
     const [rating, setRating] = useState(0)
@@ -22,6 +24,7 @@ function Rating(props){
                 let avg = s / (Object.keys(rates).length)
                     
                 setRating(avg)
+                console.log(avg)
             }
         })
         .catch(error => console.log(error))
@@ -98,9 +101,9 @@ function Rating(props){
             </ul>
             <ul className="tag">
                 <li>TAG:</li>
-                <li><a className="color" href>Pink <span>/</span></a></li>
-                <li><a className="color" href>T-Shirt <span>/</span></a></li>
-                <li><a className="color" href>Girls</a></li>
+                <li><Link className="color" to ="#">Pink <span>/</span></Link></li>
+                <li><Link className="color" to ="#">T-Shirt <span>/</span></Link></li>
+                <li><Link className="color" to ="#">Girls</Link></li>
             </ul>
         </div>
         <FormError errors ={errors}/>

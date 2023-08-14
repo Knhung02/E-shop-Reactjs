@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
 import { CartContext } from '../CartContext';
 
 
@@ -7,6 +9,10 @@ import { CartContext } from '../CartContext';
 function Header(){
     const navigate = useNavigate();
     const cart = useContext(CartContext)
+    // const cart=useSelector(state => state.hobby.qty)
+    // console.log(cart)
+
+
     let storage = localStorage.getItem("Cart");
 	
         function renderLogin(){
@@ -17,10 +23,10 @@ function Header(){
                 if(user === true){
                     return(
                         <li onClick={logout}>
-                            <a>
-                                <i class="fa fa-lock"></i> 
+                            <Link to ="#">
+                                <i className="fa fa-lock"></i> 
                                 Logout
-                            </a>
+                            </Link>
                         </li>
                     )
                 }else{
@@ -35,7 +41,7 @@ function Header(){
                 return(
                     <li>
                         <Link to="/login">
-                            <i class="fa fa-lock"></i> 
+                            <i className="fa fa-lock"></i> 
                             Login
                         </Link>
                     </li>
@@ -130,8 +136,8 @@ function Header(){
                                                 <span className="caret"></span>
                                             </button>
                                             <ul className="dropdown-menu">
-                                                <li><a href=" ">Canada</a></li>
-                                                <li><a href=" ">UK</a></li>
+                                                <li><Link to="#">Canada</Link></li>
+                                                <li><Link to="#">UK</Link></li>
                                             </ul>
                                         </div>
                                         
@@ -141,8 +147,8 @@ function Header(){
                                                 <span className="caret"></span>
                                             </button>
                                             <ul className="dropdown-menu">
-                                                <li><a href=" ">Canadian Dollar</a></li>
-                                                <li><a href=" ">Pound</a></li>
+                                                <li><Link to=" ">Canadian Dollar</Link></li>
+                                                <li><Link to=" ">Pound</Link></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -152,7 +158,7 @@ function Header(){
                                         <ul className="nav navbar-nav">
                                             {renderAccount()}
                                             
-                                            <li><a href=""><i className="fa fa-crosshairs"></i> Checkout</a></li>
+                                            <li><Link to="#"><i className="fa fa-crosshairs"></i> Checkout</Link></li>
                                             <li><Link to="product/cart"><i className="fa fa-shopping-cart"></i> Cart ({storage})</Link></li>
                                             
                                             {renderLogin()}

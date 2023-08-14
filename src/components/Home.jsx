@@ -10,8 +10,7 @@ function Home({tabs = DataCategory}){
 	const [data, setData] = useState([])
 
 	useEffect(() =>{
-		let url = "/product" 
-		
+		let url = "/product";
 		axiosClient.get(url)
 		.then(res =>{
 			
@@ -76,16 +75,16 @@ function Home({tabs = DataCategory}){
 							<div className="product-image-wrapper">
 								<div className="single-products">
 										<div className="productinfo text-center" >
-										<img src = {"http://localhost/laravel8/public/upload/product/" + data[key]["id_user"]  +"/"+ img[0]}/>
+										<img alt="#" src = {"http://localhost/laravel8/public/upload/product/" + data[key]["id_user"]  +"/"+ img[0]}/>
 									 		<h2 >${data[key].price}</h2>
 									 		<p >{data[key].name}</p>
-									 		<a  href="#" className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</a>
+									 		<Link to="#" className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</Link>
 									 	</div>
 										<div className="product-overlay" id="1">
 										<div className="overlay-content">
 											<h2>${data[key].price}</h2>
 											<p>{data[key].name}</p>
-											<a href="#" id = {data[key].id}  className="btn btn-default add-to-cart" onClick={handleCart}  ><i className="fa fa-shopping-cart"></i>Add to cart</a>
+											<Link to="#" id = {data[key].id}  className="btn btn-default add-to-cart" onClick={handleCart}  ><i className="fa fa-shopping-cart"></i>Add to cart</Link>
 										</div>
 										</div>
 								</div>
@@ -110,33 +109,33 @@ function Home({tabs = DataCategory}){
 				{renderData()}
 			</div>
 			
-			<div class="category-tab">
-				<div class="col-sm-12" style={{display:"flex"}}>
-					<ul class="nav nav-tabs">
+			<div className="category-tab">
+				<div className="col-sm-12" style={{display:"flex"}}>
+					<ul className="nav nav-tabs">
 						{tabs.map((items,index)=>{
 							return(
 								<li >
-									<a data-toggle="tab">
+									<Link to ="#" data-toggle="tab">
 										{items.category}
-									</a>
+									</Link>
 								</li>
 							)
 						})}
 					</ul>
 				</div>
-				<div class="tab-content">
-					<div class="tab-pane fade active in" id="tshirt" >
+				<div className="tab-content">
+					<div className="tab-pane fade active in" id="tshirt" >
 						
 						{tabs.map((items,index)=>{
 							return(
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
+								<div className="col-sm-3">
+									<div className="product-image-wrapper">
+										<div className="single-products">
+											<div className="productinfo text-center">
 												<img src={`frontend/images/home/${items.image}`} alt="" />
 												<h2>{items.price}</h2>
 												<p>{items.name}</p>
-												<a  class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<Link to="#" className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</Link>
 											</div>
 										</div>
 									</div>

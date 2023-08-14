@@ -35,9 +35,9 @@ function Blog(){
                       <i className="fa fa-star-half-o" />
                     </span>
                   </div>
-                  <a href>
+                  <Link to = "#">
                     <img src={"http://localhost/laravel8/public/upload/Blog/image/" + value.image} alt="" />
-                  </a>
+                  </Link>
                   <p>{value.description}</p>
                   <Link className="btn btn-primary" to={"/blog/detail/" + value.id}>Read More</Link>
                 </div>
@@ -53,10 +53,10 @@ function Blog(){
           {renderData()}   
           <div className="pagination-area">
             <ul className="pagination">
-              <li><a href className="active">1</a></li>
-              <li><a href>2</a></li>
-              <li><a href>3</a></li>
-              <li><a href><i className="fa fa-angle-double-right" /></a></li>
+              <li><Link to = "#" className="active">1</Link></li>
+              <li><Link to = "#">2</Link></li>
+              <li><Link to = "#">3</Link></li>
+              <li><Link to = "#"><i className="fa fa-angle-double-right" /></Link></li>
             </ul>
           </div>
         </div>

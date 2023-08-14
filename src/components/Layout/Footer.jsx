@@ -104,11 +104,11 @@ function Footer(){
 								<div className="single-widget">
 									<h2>Quock Shop</h2>
 									<ul className="nav nav-pills nav-stacked">
-										<li><a href="#">T-Shirt</a></li>
-										<li><a href="#">Mens</a></li>
-										<li><a href="#">Womens</a></li>
-										<li><a href="#">Gift Cards</a></li>
-										<li><a href="#">Shoes</a></li>
+										<li><Link to="#">T-Shirt</Link></li>
+										<li><Link to="#">Mens</Link></li>
+										<li><Link to="#">Womens</Link></li>
+										<li><Link to="#">Gift Cards</Link></li>
+										<li><Link to="#">Shoes</Link></li>
 									</ul>
 								</div>
 							</div>
@@ -116,11 +116,11 @@ function Footer(){
 								<div className="single-widget">
 									<h2>Policies</h2>
 									<ul className="nav nav-pills nav-stacked">
-										<li><a href="#">Terms of Use</a></li>
-										<li><a href="#">Privecy Policy</a></li>
-										<li><a href="#">Refund Policy</a></li>
-										<li><a href="#">Billing System</a></li>
-										<li><a href="#">Ticket System</a></li>
+										<li><Link to="#">Terms of Use</Link></li>
+										<li><Link to="#">Privecy Policy</Link></li>
+										<li><Link to="#">Refund Policy</Link></li>
+										<li><Link to="#">Billing System</Link></li>
+										<li><Link to="#">Ticket System</Link></li>
 									</ul>
 								</div>
 							</div>
@@ -128,11 +128,11 @@ function Footer(){
 								<div className="single-widget">
 									<h2>About Shopper</h2>
 									<ul className="nav nav-pills nav-stacked">
-										<li><a href="#">Company Information</a></li>
-										<li><a href="#">Careers</a></li>
-										<li><a href="#">Store Location</a></li>
-										<li><a href="#">Affillate Program</a></li>
-										<li><a href="#">Copyright</a></li>
+										<li><Link to="#">Company Information</Link></li>
+										<li><Link to="#">Careers</Link></li>
+										<li><Link to="#">Store Location</Link></li>
+										<li><Link to="#">Affillate Program</Link></li>
+										<li><Link to="#">Copyright</Link></li>
 									</ul>
 								</div>
 							</div>
@@ -155,7 +155,7 @@ function Footer(){
 					<div className="container">
 						<div className="row">
 							<p className="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-							<p className="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+							<p className="pull-right">Designed by <span><Link target="_blank" to="http://www.themeum.com">Themeum</Link></span></p>
 						</div>
 					</div>
 				</div>

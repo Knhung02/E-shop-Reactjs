@@ -12,20 +12,20 @@ function MenuLeft2(){
                       <div className="panel panel-default">
                         <div className="panel-heading">
                           <h4 className="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordian" href="#sportswear" >
+                            <Link data-toggle="collapse" data-parent="#accordian" to="#sportswear" >
                               <span className="badge pull-right"><i className="fa fa-plus" /></span>
                                 <Link to="/account/update">ACCOUNT</Link>
-                            </a>
+                            </Link>
                           </h4>
                         </div>
                         <div id="sportswear" className="panel-collapse collapse">
                           <div className="panel-body">
                             <ul>
-                              <li><a href>Nike </a></li>
-                              <li><a href>Under Armour </a></li>
-                              <li><a href>Adidas </a></li>
-                              <li><a href>Puma</a></li>
-                              <li><a href>ASICS </a></li>
+                              <li><Link to = "#">Nike </Link></li>
+                              <li><Link to = "#">Under Armour </Link></li>
+                              <li><Link to = "#">Adidas </Link></li>
+                              <li><Link to = "#">Puma</Link></li>
+                              <li><Link to = "#">ASICS </Link></li>
                             </ul>
                           </div>
                         </div>
@@ -33,10 +33,10 @@ function MenuLeft2(){
                       <div className="panel panel-default">
                         <div className="panel-heading">
                           <h4 className="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordian" href="/account/my-product">
+                            <Link data-toggle="collapse" data-parent="#accordian" to ="/account/my-product">
                               <span className="badge pull-right"><i className="fa fa-plus" /></span>
                               MY PRODUCT
-                            </a>
+                            </Link>
                           </h4>
                         </div>
                       
