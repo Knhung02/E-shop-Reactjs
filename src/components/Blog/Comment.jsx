@@ -2,12 +2,12 @@
 import React, {useState} from "react";
 import axiosClient from "../../configs/axios";
 import FormError from "../Member/FormError";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Comment(props){
-
-  const [comment, setComment] = useState("")
-  const [errors, setErrors] = useState({})
+  const navigate = useNavigate();
+  const [comment, setComment] = useState("");
+  const [errors, setErrors] = useState({});
 
   function handleInput(e){
     setComment(e.target.value)
@@ -72,6 +72,7 @@ function Comment(props){
               }else{
                   console.log(res)
                   props.getCmt(res.data.data)
+                  
               }
                
             })    
@@ -94,7 +95,7 @@ function Comment(props){
                   </div>
                   <span>*</span>
                   <textarea name="message" rows={11} onChange={handleInput} />
-                  <Link onClick={handleSubmit} className="btn btn-primary" to ="#" >post comment</Link>
+                  <Link onClick={handleSubmit} className="btn btn-primary" to ="#">post comment</Link>
                 </div>
               </div>
             </div>

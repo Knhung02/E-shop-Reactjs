@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import FormError from "./FormError";
 import axiosClient from "../../configs/axios";
+import { message } from "antd";
 function Login(){
     const navigate = useNavigate();
 
@@ -49,22 +50,20 @@ function Login(){
             }
             // console.log(data)
             axiosClient.post("/login", data)
-            
             .then((res)=>{
                 if(res.data.errors){
                     setErrors(res.data.errors)
+                    message.error('Login failed!')
                 }else{
-                    alert("Login successful")
+                    message.success('Login successful!')
                     // true-> local
-                    console.log(res)
-                    const auth = res.data.Auth
-                    const token = res.data.token
-                    console.log(res)
+                    // console.log(res)
+                    const auth = res.data.Auth;
+                    const token = res.data.token;
                     localStorage.setItem("isLogin", JSON.stringify(true));
                     localStorage.setItem("infoUser", JSON.stringify(auth));
                     localStorage.setItem("token", JSON.stringify(token));
                     navigate("/")
-                    
                 }
             }).catch( errors=>console.log(errors))
                     

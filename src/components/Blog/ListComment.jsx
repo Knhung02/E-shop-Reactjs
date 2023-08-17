@@ -5,10 +5,8 @@ import { Link } from "react-router-dom";
 function ListComment(props){
   const getListcomment=props.listCmt
   function handleReply(e){
-    props.getIdREP(e.target.id)
-             
-  }
-
+    props.getIdREP(e.target.id);
+  };
   function renderData(){
     // console.log(getId)
    

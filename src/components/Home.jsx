@@ -8,13 +8,12 @@ import DataCategory from './DataCategory'
 function Home({tabs = DataCategory}){
 	const cart = useContext(CartContext)
 	const [data, setData] = useState([])
-
+	
 	useEffect(() =>{
 		let url = "/product";
 		axiosClient.get(url)
 		.then(res =>{
-			
-			console.log(res.data.data)
+			// console.log(res.data.data)
 			setData(res.data.data)
 		})    
 	},[])

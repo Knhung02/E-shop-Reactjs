@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
 import { CartContext } from '../CartContext';
+import { message } from 'antd';
 
 
 
@@ -8,80 +9,55 @@ function Header(){
     const navigate = useNavigate();
     const cart = useContext(CartContext)
     let storage = localStorage.getItem("Cart");
-	
-        function renderLogin(){
-            // - goi local ra 
-            let user = localStorage.getItem("isLogin")
-            if(user){
-                user=JSON.parse(user)
-                if(user === true){
-                    return(
-                        <li onClick={logout}>
-                            <Link to ="#">
-                                <i className="fa fa-lock"></i> 
-                                Logout
-                            </Link>
-                        </li>
-                    )
-                }else{
-                    return(
-                        <li><Link to="/login" ><i className="fa fa-lock" />Login</Link></li> 
-                    )
-    
-                }
-                
-            }
-            else{
+    function logout(){
+        localStorage.removeItem("isLogin");
+        navigate("/login")  
+        message.success('Logout successful!')
+    }
+    let user=localStorage.getItem("isLogin")
+
+    function renderLogin(){
+        // - goi local ra 
+        if(user){
+            user=JSON.parse(user)
+            if(user === true){
                 return(
-                    <li>
-                        <Link to="/login">
-                            <i className="fa fa-lock"></i> 
-                            Login
-                        </Link>
+                    <li onClick={logout}>
+                        <Link to ="#"><i className="fa fa-lock"></i>Logout</Link>
                     </li>
                 )
-            }
-        }
-
-        function renderRegister(){
-            let user = localStorage.getItem("isLogin")
-            if(user){
-                user=JSON.parse(user)
-                if(user === true){
-                    return(
-                        <></>
-                    )
-                }else{
-                    return(
-                        <li><Link to="/register"><i className=" fa fa-solid fa-user"></i>Register</Link></li>
-                    )
-    
-                }
-                
-            }
-            else{
+            }else{
                 return(
-                    <li><Link to="/register"><i className=" fa fa-solid fa-user"></i>Register</Link></li>
+                    <li><Link to="/login" ><i className="fa fa-lock" />Login</Link></li> 
                 )
-            }
-        }
 
-        function logout(){
-            localStorage.removeItem("isLogin");
-            navigate("/login")
-        }
-        function renderAccount(){
-            let user=localStorage.getItem("isLogin")
-            if(user){
-                user=JSON.parse(user)
-                if(user===true){
-                   return(
-                    <li><Link to="/account/update"><i className="fa fa-user" /> Account</Link></li>
-                   )
-                }
             }
-    
+            
         }
+        else{
+            return(
+                <li>
+                    <Link to="/login">
+                        <i className="fa fa-lock"></i> 
+                        Login
+                    </Link>
+                </li>
+            )
+        }
+    }
+
+    function renderRegister(){
+        return(
+            user ? null:( (<li><Link to="/register"><i className="fa fa-lock"></i> Register </Link></li>))
+        )
+    }
+
+        
+    function renderAccount(){
+        return(
+            user ? ( <li><Link to="/account/update"><i className="fa fa-user" /> Account</Link></li>) : null
+        )
+    }
     
 
         return(

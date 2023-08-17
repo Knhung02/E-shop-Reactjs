@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
 import axiosClient from "../../configs/axios";
 import FormError from "./FormError";
+import { useNavigate } from "react-router-dom";
 function Register(){
+    const navigate = useNavigate();
 
     const [inputs, setInputs] = useState({
         name: "" ,
@@ -13,8 +15,8 @@ function Register(){
     });
     const [errors, setErrors] = useState({});
 
-    const [getFile, setFile] = useState("")
-    const [getAvatar, setAvatar] = useState("")
+    const [getFile, setFile] = useState("");
+    const [getAvatar, setAvatar] = useState("");
     
     function hanldeFile(e){
         const file = e.target.files
@@ -80,16 +82,17 @@ function Register(){
             
             if(size > 1024 * 1024){
                 flag = false;
-                errorSubmit.file = "file loi"
+                errorSubmit.file = "file error"
             }
             else if(!arr.includes(splitT[1])){
                 flag = false;
-                errorSubmit.file = "Wrong file format "
+                errorSubmit.file = "Wrong file format!"
             } 
         }else{
             flag = false;
-            errorSubmit.file = "Please upload file"
+            errorSubmit.file = "Please upload file!"
         }
+
         if(!flag){
             setErrors(errorSubmit);
         }else{
@@ -106,13 +109,13 @@ function Register(){
             }
             console.log(data)
             axiosClient.post("/register", data)
-            
             .then((res)=>{
                 
                     if(res.data.errors){
                         setErrors(res.data.errors)
                     }else{
                         alert("Register successful")
+                        navigate('/login')
                     }
                     
             
@@ -127,18 +130,18 @@ function Register(){
         <>            
             <div className="col-sm-4">
                 <div className="signup-form">{/*sign up form*/}
-                <h2>New User Signup!</h2>
-                <form action="#" encType="multipart/form-data" onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Name" name="name" value={inputs.name} onChange ={handleInput}/>
-                    <input type="email" placeholder="Email Address" name="email" value={inputs.email}  onChange ={handleInput}/>
-                    <input type="password" placeholder="Password" name="password" value={inputs.password}  onChange ={handleInput}/>
-                    <input type="text" placeholder="Phone" name="phone" value={inputs.phone}  onChange ={handleInput}/>
-                    <input type="text" placeholder="Address" name="address" value={inputs.address}  onChange ={handleInput}/>
-                    <input type="file"  name="getFile"   onChange={hanldeFile}/>
-                    <input type="text" placeholder="Level" value="0" name="level" onChange ={handleInput}/>
-                    <FormError errors ={errors}/>
-                    <button type="submit" className="btn btn-default">Signup</button>
-                </form>
+                    <h2>New User Signup!</h2>
+                    <form action="#" encType="multipart/form-data" onSubmit={handleSubmit}>
+                        <input type="text" placeholder="Name" name="name" value={inputs.name} onChange ={handleInput}/>
+                        <input type="email" placeholder="Email Address" name="email" value={inputs.email}  onChange ={handleInput}/>
+                        <input type="password" placeholder="Password" name="password" value={inputs.password}  onChange ={handleInput}/>
+                        <input type="text" placeholder="Phone" name="phone" value={inputs.phone}  onChange ={handleInput}/>
+                        <input type="text" placeholder="Address" name="address" value={inputs.address}  onChange ={handleInput}/>
+                        <input type="file"  name="getFile"   onChange={hanldeFile}/>
+                        <input type="text" placeholder="Level" value="0" name="level" onChange ={handleInput}/>
+                        <FormError errors ={errors}/>
+                        <button type="submit" className="btn btn-default">Signup</button>
+                    </form>
                 </div>{/*/sign up form*/}
             </div>
         </>
