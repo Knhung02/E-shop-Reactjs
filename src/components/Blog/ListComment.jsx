@@ -14,44 +14,45 @@ function ListComment(props){
       if(getListcomment.length >0){
         return getListcomment.map((value,key)=>{
           // console.log(value.id)
-          if(value.id_comment===0){
+          if(value.id_comment == 0){
               return(
               <>
-                  <li className="media">
+                  <li key={key} className="media">
                       <Link className="pull-left" to="#">
                         <img className="media-object" src={"http://localhost/laravel8/public/upload/user/avatar/" + value.image_user  } alt="" />
                       </Link>
                       <div className="media-body">
                         <ul className="sinlge-post-meta">
                             <li><i className="fa fa-user" />{value.name_user}</li>
-                            <li><i className="fa fa-clock-o" /> 1:33 pm</li>
-                            <li><i className="fa fa-calendar" /> DEC 5, 2013</li>
+                            <li><i className="fa fa-clock-o" /> {value.created_at}</li>
+                            <li><i className="fa fa-calendar" /> {value.updated_at}</li>
                         </ul>
                         <p>{value.comment}</p>
-                        <Link id={value.id} className="btn btn-primary" onClick={handleReply} to="#traloi"><i className="fa fa-reply" />Replay</Link>
+                        <Link id={value.id} className="btn btn-primary" onClick={handleReply} to="#reply"><i className="fa fa-reply" />Replay</Link>
                       </div>
                   </li>
-                  {getListcomment.map((value2,index)=>{
+                  {
+                    getListcomment.map((value2,key2)=>{
                     
-                      if(value.id === value2.id_comment){
+                      if(value2.id_comment == value.id){
                           return(
-                              <li className="media second-media">
+                              <li key={key2} className="media second-media">
                                   <Link className="pull-left" to="#">
                                   <img className="media-object" src={"http://localhost/laravel8/public/upload/user/avatar/" + value2.image_user } alt="" />
                                   </Link>
                                   <div className="media-body">
                                       <ul className="sinlge-post-meta">
                                           <li><i className="fa fa-user" />{value2.name_user}</li>
-                                          <li><i className="fa fa-clock-o" /> 1:33 pm</li>
-                                          <li><i className="fa fa-calendar" /> DEC 5, 2013</li>
+                                          <li><i className="fa fa-clock-o" /> {value2.created_at}</li>
+                                          <li><i className="fa fa-calendar" /> {value2.updated_at}</li>
                                       </ul>
                                       <p>{value2.comment}</p>
-                                      <Link className="btn btn-primary" to="#"><i className="fa fa-reply" />Replay</Link>
+
                                   </div>
                               </li>
                           )
                       }
-                  })
+                    })
     
                   }
               </>
@@ -60,16 +61,19 @@ function ListComment(props){
           }
         })
       }
+
 }
+
 
 	return(
 		<div className="response-area">
-      <h2>{getListcomment.length} RESPONSES</h2>
-      <ul className="media-list">
-        {renderData()}
-      </ul>			
-    </div>
+		      <h2>{getListcomment.length} RESPONSES</h2>
+		      <ul className="media-list">
+			{renderData()}
+		      </ul>			
+		 </div>
 
 	)
 }
 export default ListComment;
+
